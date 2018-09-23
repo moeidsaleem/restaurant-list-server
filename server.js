@@ -8,6 +8,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 const request= require('request');
 const rp = require('request-promise');
 
+var cors=require('./cors');
+app.use(cors.permission)
 getOptions = function(uri){
     return {
         uri: uri,
