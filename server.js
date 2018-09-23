@@ -77,9 +77,11 @@ app.get('/offers/:id', (req,res)=>{
 
 
 /* ADD USER RESTAURANT TO TASTED */
-app.get('/addrestaurant/:userId&:restaurantId', (req,res)=>{
+app.get('/addtasted/:userId&:restaurantId', (req,res)=>{
     let userId = req.params.userid;
     let restaurantId = req.params.restaurantId;
+    console.log(userId);
+    console.log(restaurantId)
     rp(getOptions('http://dottrw.com/apis/addTasted.php?imei=' +  userId + '&restaurant_id=' + restaurantId)).then(data=>{
        console.log(data);
        res.json(data);
@@ -114,7 +116,12 @@ app.get('/gettasted/:userId', (req,res)=>{
     let userId = req.params.userid;
     rp(getOptions('http://dottrw.com/apis/getTasted.php?imei=' +  userId)).then(data=>{
        console.log(data);
-       res.json(data);
+       if(data.error !== undefined){
+           res.json([])
+       }else{
+        res.json(data);
+
+       }
     });
 });
 
