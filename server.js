@@ -116,14 +116,12 @@ app.get('/gettasted/:userId', (req,res)=>{
     let userId = req.params.userid;
     rp(getOptions('http://dottrw.com/apis/getTasted.php?imei=' +  userId)).then(data=>{
        console.log(data);
-       if(data.error !== undefined){
-           res.json([])
-       }else{
+          
         res.json(data);
 
-       }
+       
     });
 });
 
 
-app.listen(4002, ()=> console.log(`console log 4002s`));
+app.listen(4002, ()=> console.log(`console log 4002`));
