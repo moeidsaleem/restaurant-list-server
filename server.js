@@ -78,7 +78,7 @@ app.get('/offers/:id', (req,res)=>{
 
 /* ADD USER RESTAURANT TO TASTED */
 app.get('/addtasted/:userId&:restaurantId', (req,res)=>{
-    let userId = req.params.userId;
+    let userId = Number(req.params.userId);
     let restaurantId = req.params.restaurantId;
     console.log(userId);
     console.log(restaurantId)
