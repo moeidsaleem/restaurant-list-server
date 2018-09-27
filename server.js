@@ -116,6 +116,8 @@ app.get('/getwishlist/:userId', (req,res)=>{
 app.get('/removewishlist/:userId&:restaurantId', (req,res)=>{
     let userId = req.params.userId;
     let restaurantId = req.params.restaurantId;
+    console.log(userId);
+    console.log(restaurantId);
     rp(getOptions('http://dottrw.com/apis/addWishlist.php?remove='+ userId +'&restaurant_id=' +  restaurantId)).then(data=>{
        console.log(data);
        res.json(data);
