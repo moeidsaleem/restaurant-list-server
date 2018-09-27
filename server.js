@@ -112,6 +112,15 @@ app.get('/getwishlist/:userId', (req,res)=>{
     });
 });
 
+/* REMOVE USER WISHLIST*/
+app.get('/removewishlist/:userId&:restaurantId', (req,res)=>{
+    let userId = req.params.userId;
+    let restaurantId = req.params.restaurantId;
+    rp(getOptions('http://dottrw.com/apis/addWishlist.php?remove='+ userId +'&restaurant_id=' +  restaurantId)).then(data=>{
+       console.log(data);
+       res.json(data);
+    });
+});
 /* GET USER TASTED http://dottrw.com/apis/getTasted.php?imei={[MOBILE.IMEI]} */
 app.get('/gettasted/:userId', (req,res)=>{
     let userId = req.params.userId;
@@ -122,5 +131,15 @@ app.get('/gettasted/:userId', (req,res)=>{
     });
 });
 
+/* http://dottrw.com/apis/addTasted.php?remove={UNIQUEID}&restaurant_id={RESTURENTID} */
+/* REMOVE USER TASTED*/
+app.get('/removetasted/:userId&:restaurantId', (req,res)=>{
+    let userId = req.params.userId;
+    let restaurantId = req.params.restaurantId;
+    rp(getOptions('http://dottrw.com/apis/addTasted.php?remove='+ userId +'&restaurant_id=' +  restaurantId)).then(data=>{
+       console.log(data);
+       res.json(data);
+    });
+});
 
 app.listen(4002, ()=> console.log(`console log 4002`));
