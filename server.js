@@ -84,6 +84,7 @@ app.get('/addtasted/:userId&:restaurantId', (req,res)=>{
     console.log(restaurantId)
     rp(getOptions('http://dottrw.com/apis/addTasted.php?imei=' +  userId + '&restaurant_id=' + restaurantId)).then(data=>{
        console.log(data);
+       console.log(`restaurant added to tasted for id ${userId}`)
        res.json(data);
     });
 });
