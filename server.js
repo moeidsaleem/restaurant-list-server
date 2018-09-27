@@ -78,7 +78,7 @@ app.get('/offers/:id', (req,res)=>{
 
 /* ADD USER RESTAURANT TO TASTED */
 app.get('/addtasted/:userId&:restaurantId', (req,res)=>{
-    let userId = req.params.userid;
+    let userId = req.params.userId;
     let restaurantId = req.params.restaurantId;
     console.log(userId);
     console.log(restaurantId)
@@ -93,7 +93,7 @@ app.get('/addtasted/:userId&:restaurantId', (req,res)=>{
 /* WISHLIST  */
 /* ADD USER RESTAURANT TO WISHLIST */
 app.get('/addwishlist/:userId&:restaurantId', (req,res)=>{
-    let userId = req.params.userid;
+    let userId = req.params.userId;
     let restaurantId = req.params.restaurantId;
     rp(getOptions('http://dottrw.com/apis/addWishlist.php?imei=' +  userId + '&restaurant_id=' + restaurantId)).then(data=>{
        console.log(data);
@@ -104,7 +104,7 @@ app.get('/addwishlist/:userId&:restaurantId', (req,res)=>{
 
 /* GET USER WISHLIST http://dottrw.com/apis/getWishlist.php?imei={[MOBILE.IMEI]} */
 app.get('/getwishlist/:userId', (req,res)=>{
-    let userId = req.params.userid;
+    let userId = req.params.userId;
     rp(getOptions('http://dottrw.com/apis/getWishlist.php?imei=' +  userId)).then(data=>{
        console.log(data);
        res.json(data);
@@ -113,7 +113,7 @@ app.get('/getwishlist/:userId', (req,res)=>{
 
 /* GET USER TASTED http://dottrw.com/apis/getTasted.php?imei={[MOBILE.IMEI]} */
 app.get('/gettasted/:userId', (req,res)=>{
-    let userId = req.params.userid;
+    let userId = req.params.userId;
     console.log(`User id is ${userId}`)
     rp(getOptions('http://dottrw.com/apis/getTasted.php?imei=' +  userId)).then(data=>{
        console.log(data);
