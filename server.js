@@ -114,12 +114,10 @@ app.get('/getwishlist/:userId', (req,res)=>{
 /* GET USER TASTED http://dottrw.com/apis/getTasted.php?imei={[MOBILE.IMEI]} */
 app.get('/gettasted/:userId', (req,res)=>{
     let userId = req.params.userid;
+    console.log(`User id is ${userId}`)
     rp(getOptions('http://dottrw.com/apis/getTasted.php?imei=' +  userId)).then(data=>{
        console.log(data);
-          
         res.json(data);
-
-       
     });
 });
 
